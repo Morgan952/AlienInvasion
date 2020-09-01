@@ -28,8 +28,10 @@ class Ship:
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.x += self.settings.ship_speed
         elif self.moving_left and self.rect.left > 0:
+            # Движение корабля влево до границы экрана
             self.x -= self.settings.ship_speed
         elif self.moving_up and self.rect.y > 0:
+            # Движение корабля ввкрх до границы экрана
             self.y -= self.settings.ship_speed
         elif self.moving_down and self.rect.bottom < self.screen_rect.bottom:
             self.y += self.settings.ship_speed
