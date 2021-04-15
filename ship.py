@@ -21,11 +21,15 @@ class Ship:
         self.moving_left = False
         self.moving_up = False
         self.moving_down = False
+        self.moving_up_right = False
 
     def update(self):
         """Обновляет позицию корабля с учетом флага."""
         # Обновляет атрибут х, а не rect.
-        if self.moving_right and self.rect.right < self.screen_rect.right:
+        if self.moving_up_right and self.rect.right < self.screen_rect.right and self.rect.y > 0:
+            self.x += self.settings.ship_speed
+            self.y -= self.settings.ship_speed
+        elif self.moving_right and self.rect.right < self.screen_rect.right:
             self.x += self.settings.ship_speed
         elif self.moving_left and self.rect.left > 0:
             # Движение корабля влево до границы экрана
@@ -35,7 +39,7 @@ class Ship:
             self.y -= self.settings.ship_speed
         elif self.moving_down and self.rect.bottom < self.screen_rect.bottom:
             self.y += self.settings.ship_speed
-        # Обновление атрибута rect на основании rect.x и rect.y
+            # Обновление атрибута rect на основании rect.x и rect.y
         self.rect.x = self.x
         self.rect.y = self.y
 

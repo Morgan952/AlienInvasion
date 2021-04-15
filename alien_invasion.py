@@ -45,6 +45,8 @@ class AlienInvasion:
             self.ship.moving_up = True
         elif event.key == pygame.K_DOWN:
             self.ship.moving_down = True
+        elif event.key == pygame.K_RIGHT and event.key == pygame.K_UP:
+            self.ship.moving_up_right = True
 
     def _check_keyup_events(self, event):
         if event.key == pygame.K_RIGHT:
@@ -55,6 +57,8 @@ class AlienInvasion:
             self.ship.moving_up = False
         elif event.key == pygame.K_DOWN:
             self.ship.moving_down = False
+        elif event.key == pygame.K_RIGHT and event.key == pygame.K_UP:
+            self.ship.moving_up_right = False
 
     def _update_screen(self):
         """Обновляет изображения на экране и отображает новый экран."""
@@ -69,3 +73,4 @@ if __name__ == '__main__':
     # Создание экземпляра и запуск игры.
     ai = AlienInvasion()
     ai.run_game()
+
